@@ -1,4 +1,8 @@
-import { Car, Facebook, Instagram } from "lucide-react";
+import { 
+    Car, 
+    // Facebook, 
+    // Instagram 
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
@@ -31,10 +35,10 @@ export default function Footer() {
           <p className="text-slate-400">Phone: +880 1700 000000</p>
           <p className="text-slate-400">Location: Dhaka, Bangladesh</p>
 
-          <div className="flex gap-3 mt-4">
-            <Facebook />
-            <Instagram />
-            <span className="font-bold">X</span>
+          <div className="flex gap-3 mt-4 font-bold">
+            <span>Facebook</span>
+            <span>Instagram</span>
+            <span>X</span>
           </div>
         </div>
       </div>
