@@ -10,13 +10,19 @@ export default function Login() {
 
   const from = location.state || "/";
 
+    useEffect(() => {
+      if (user) {
+        navigate(from, { replace: true });
+      }
+    }, [user, from, navigate]);
+
   const handleLogin = async e => {
     e.preventDefault();
 
     try {
       await loginUser(e.target.email.value, e.target.password.value);
       toast.success("Login successful");
-      navigate(from);
+      navigate(from, { replace: true });
     } catch {
       toast.error("Invalid email or password");
     }
@@ -26,7 +32,7 @@ export default function Login() {
     try {
       await googleLogin();
       toast.success("Google login successful");
-      navigate("/");
+      navigate(from, { replace: true });
     } catch {
       toast.error("Google login failed");
     }
