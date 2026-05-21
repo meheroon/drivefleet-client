@@ -1,10 +1,8 @@
-
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
-import { Car } from "lucide-react";
+import { Car, Moon, Sun, Menu } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
-import { Moon, Sun } from "lucide-react";
 import { ThemeContext } from "../providers/ThemeProvider";
 
 export default function Navbar() {
@@ -30,13 +28,13 @@ export default function Navbar() {
   );
 
   return (
-    <div className="navbar bg-white shadow-sm sticky top-0 z-50 px-4 md:px-8">
+    <div className="navbar bg-base-100 text-base-content shadow-sm sticky top-0 z-50 px-4 md:px-8">
       <div className="navbar-start">
         <div className="dropdown">
-          <button tabIndex={0} className="btn btn-ghost lg:hidden">
-            ☰
+          <button tabIndex={0} className="btn btn-ghost lg:hidden text-blue-700">
+            <Menu size={22} />
           </button>
-          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-white rounded-box z-50 mt-3 w-52 p-2 shadow">
+          <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 text-base-content rounded-box z-50 mt-3 w-52 p-2 shadow">
             {links}
           </ul>
         </div>
@@ -53,25 +51,22 @@ export default function Navbar() {
         </ul>
       </div>
 
-      <div className="navbar-end">
-
+      <div className="navbar-end gap-3">
         <button
           onClick={toggleTheme}
-          className="btn btn-circle btn-sm border border-gray-300"
+          className="btn btn-circle btn-sm bg-base-200 text-base-content border border-base-300 shadow"
+          aria-label="Toggle theme"
         >
-          {theme === "light" ? (
-            <Moon size={18} />
-          ) : (
-            <Sun size={18} />
-          )}
+          {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
         </button>
+
         {!user ? (
           <Link to="/login" className="btn-primary-custom">Login</Link>
         ) : (
           <div className="dropdown dropdown-end">
             <button tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-               <img
+                <img
                   src={
                     user.photoURL ||
                     "https://ui-avatars.com/api/?name=DriveFleet+User&background=2563eb&color=ffffff"
@@ -84,8 +79,11 @@ export default function Navbar() {
                 />
               </div>
             </button>
-            <ul tabIndex={0} className="menu dropdown-content bg-white rounded-box z-50 mt-3 w-56 p-2 shadow">
-              <li className="px-3 py-2 text-sm font-semibold">{user.displayName || "DriveFleet User"}</li>
+
+            <ul tabIndex={0} className="menu dropdown-content bg-base-100 text-base-content rounded-box z-50 mt-3 w-56 p-2 shadow">
+              <li className="px-3 py-2 text-sm font-semibold">
+                {user.displayName || "DriveFleet User"}
+              </li>
               <li><Link to="/add-car">Add Car</Link></li>
               <li><Link to="/my-bookings">My Bookings</Link></li>
               <li><Link to="/my-added-cars">My Added Cars</Link></li>
