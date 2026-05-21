@@ -45,9 +45,9 @@ export default function Home() {
               Explore verified rental cars, compare prices, and book your next ride with a smooth and secure experience.
             </p>
 
-            <button className="btn-primary-custom">
+            <Link to="/explore-cars" className="btn-primary-custom">
               Explore Cars
-            </button>
+            </Link>
           </motion.div>
 
           {/* <img
