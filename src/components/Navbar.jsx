@@ -56,9 +56,16 @@ export default function Navbar() {
           <div className="dropdown dropdown-end">
             <button tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img
-                  src={user.photoURL || "https://i.ibb.co.com/8N7HkWY/user.png"}
+               <img
+                  src={
+                    user.photoURL ||
+                    "https://ui-avatars.com/api/?name=DriveFleet+User&background=2563eb&color=ffffff"
+                  }
                   alt={user.displayName || "User"}
+                  onError={(e) => {
+                    e.currentTarget.src =
+                      "https://ui-avatars.com/api/?name=User&background=2563eb&color=ffffff";
+                  }}
                 />
               </div>
             </button>
