@@ -33,8 +33,8 @@ export default function Register() {
       await updateUserProfile(form.name.value, form.photo.value);
       toast.success("Registration successful");
       navigate("/login");
-    } catch {
-      toast.error("Registration failed");
+    } catch (error) {
+       toast.error(error.message || "Registration failed");
     }
   };
 
@@ -43,8 +43,8 @@ export default function Register() {
       await googleLogin();
       toast.success("Google login successful");
       navigate("/");
-    } catch {
-      toast.error("Google login failed");
+    } catch (error) {
+      toast.error(error.message || "Google login failed");
     }
   };
 
