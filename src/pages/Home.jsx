@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Loading from "../components/Loading";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [cars, setCars] = useState([]);
@@ -17,7 +18,7 @@ export default function Home() {
     <div>
       <section className="bg-gradient-to-r from-blue-950 to-blue-700 text-white">
         <div className="max-w-7xl mx-auto px-4 py-20 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-          <div>
+          {/* <div>
             <h1 className="text-4xl md:text-6xl font-bold leading-tight">
               Rent Your Perfect Car With DriveFleet
             </h1>
@@ -27,12 +28,38 @@ export default function Home() {
             <Link to="/explore-cars" className="btn bg-white text-blue-800 hover:bg-blue-50 mt-7">
               Explore Cars
             </Link>
-          </div>
+          </div> */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-6"
+          >
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight">
+              Rent Your Perfect Car With DriveFleet
+            </h1>
 
-          <img
+            <p className="text-lg md:text-2xl text-slate-200">
+              Explore verified rental cars, compare prices, and book your next ride with a smooth and secure experience.
+            </p>
+
+            <button className="btn-primary-custom">
+              Explore Cars
+            </button>
+          </motion.div>
+
+          {/* <img
             className="rounded-2xl shadow-2xl h-80 w-full object-cover"
             src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200"
             alt="Rental car"
+          /> */}
+          <motion.img
+            initial={{ opacity: 0, x: 60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200"
+            alt="Car"
+            className="rounded-3xl shadow-2xl w-full object-cover"
           />
         </div>
       </section>
