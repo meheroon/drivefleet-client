@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 
 
 export default function Login() {
-  const { loginUser, googleLogin } = useContext(AuthContext);
+  const { user,loginUser, googleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
 
