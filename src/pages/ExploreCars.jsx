@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
+import { motion } from "framer-motion";
 
 export default function ExploreCars() {
   const [cars, setCars] = useState([]);
   const [search, setSearch] = useState("");
   const [type, setType] = useState("all");
   const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {
     setLoading(true);
@@ -45,7 +47,15 @@ export default function ExploreCars() {
       {loading ? <Loading /> : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {cars.map(car => (
-            <div key={car._id} className="card bg-white shadow rounded-2xl overflow-hidden">
+            <motion.div
+              key={car._id}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="card bg-white shadow rounded-2xl overflow-hidden"
+            >
               <img src={car.image} alt={car.carName} className="h-52 w-full object-cover" />
               <div className="card-body">
                 <h3 className="card-title">{car.carName}</h3>
@@ -57,7 +67,7 @@ export default function ExploreCars() {
                   Details
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       )}

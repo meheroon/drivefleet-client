@@ -30,10 +30,10 @@ export default function Navbar() {
 
   return (
     <motion.div
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="navbar bg-base-100 text-base-content shadow-sm sticky top-0 z-50 px-4 md:px-8">
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      className="navbar bg-base-100 text-base-content px-4 md:px-8">
       <div className="navbar-start">
         <div className="dropdown">
           <button tabIndex={0} className="btn btn-ghost lg:hidden text-base-content">

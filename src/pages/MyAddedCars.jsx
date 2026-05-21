@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthContext";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import Loading from "../components/Loading";
+import { motion } from "framer-motion";
 
 export default function MyAddedCars() {
   const { user } = useContext(AuthContext);
@@ -49,7 +50,15 @@ export default function MyAddedCars() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {cars.map(car => (
-          <div key={car._id} className="card bg-white shadow rounded-2xl overflow-hidden">
+          <motion.div
+            key={car._id}
+            initial={{ opacity: 0, y: 35 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            whileHover={{ y: -8, scale: 1.02 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
+            className="card bg-white shadow rounded-2xl overflow-hidden"
+          >
             <img src={car.image} alt={car.carName} className="h-52 w-full object-cover" />
             <div className="card-body">
               <h3 className="card-title">{car.carName}</h3>
@@ -66,7 +75,7 @@ export default function MyAddedCars() {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
