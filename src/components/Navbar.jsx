@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Car, Moon, Sun, Menu } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
 import { ThemeContext } from "../providers/ThemeProvider";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const { user, logoutUser } = useContext(AuthContext);
@@ -28,10 +29,14 @@ export default function Navbar() {
   );
 
   return (
-    <div className="navbar bg-base-100 text-base-content shadow-sm sticky top-0 z-50 px-4 md:px-8">
+    <motion.div
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="navbar bg-base-100 text-base-content shadow-sm sticky top-0 z-50 px-4 md:px-8">
       <div className="navbar-start">
         <div className="dropdown">
-          <button tabIndex={0} className="btn btn-ghost lg:hidden text-blue-700">
+          <button tabIndex={0} className="btn btn-ghost lg:hidden text-base-content">
             <Menu size={22} />
           </button>
           <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 text-base-content rounded-box z-50 mt-3 w-52 p-2 shadow">
@@ -52,13 +57,15 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-end gap-3">
-        <button
-          onClick={toggleTheme}
-          className="btn btn-circle btn-sm bg-base-200 text-base-content border border-base-300 shadow"
-          aria-label="Toggle theme"
-        >
-          {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
-        </button>
+        <motion.button
+        whileTap={{ scale: 0.8 }}
+        whileHover={{ rotate: 90 }}
+        transition={{ duration: 0.3 }}
+        onClick={toggleTheme}
+        className="btn btn-circle btn-sm bg-base-200 text-base-content border border-base-300 shadow"
+      >
+        {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+      </motion.button>
 
         {!user ? (
           <Link to="/login" className="btn-primary-custom">Login</Link>
@@ -92,6 +99,6 @@ export default function Navbar() {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -9,7 +9,13 @@ function App() {
 
   return (
     <>
-      <section id="center">
+      <motion.section 
+        id="center"
+        initial={{ opacity: 0, y: 50 }}
+        viewport={{ once: true }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+      >
         <div className="hero">
           <img src={heroImg} className="base" width="170" height="179" alt="" />
           <img src={reactLogo} className="framework" alt="React logo" />
@@ -28,11 +34,18 @@ function App() {
         >
           Count is {count}
         </button>
-      </section>
+      </motion.section>
 
       <div className="ticks"></div>
 
-      <section id="next-steps">
+      <motion.section 
+        id="next-steps"
+        initial={{ opacity: 0, y: 20 }}
+        viewport={{ once: true }}
+        animate={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+      >
         <div id="docs">
           <svg className="icon" role="presentation" aria-hidden="true">
             <use href="/icons.svg#documentation-icon"></use>
@@ -111,10 +124,10 @@ function App() {
             </li>
           </ul>
         </div>
-      </section>
+      </motion.section>
 
       <div className="ticks"></div>
-      <section id="spacer"></section>
+      <motion.section id="spacer" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7 }}></motion.section>
     </>
   )
 }
