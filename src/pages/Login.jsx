@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext,useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { AuthContext } from "../context/AuthContext";
+
 
 export default function Login() {
   const { loginUser, googleLogin } = useContext(AuthContext);
