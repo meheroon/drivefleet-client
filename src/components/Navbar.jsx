@@ -1,11 +1,15 @@
-import { useContext } from "react";
+
 import { Link, NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Car } from "lucide-react";
 import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
+import { Moon, Sun } from "lucide-react";
+import { ThemeContext } from "../providers/ThemeProvider";
 
 export default function Navbar() {
   const { user, logoutUser } = useContext(AuthContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleLogout = async () => {
     try {
@@ -50,6 +54,17 @@ export default function Navbar() {
       </div>
 
       <div className="navbar-end">
+
+        <button
+          onClick={toggleTheme}
+          className="btn btn-circle btn-sm border border-gray-300"
+        >
+          {theme === "light" ? (
+            <Moon size={18} />
+          ) : (
+            <Sun size={18} />
+          )}
+        </button>
         {!user ? (
           <Link to="/login" className="btn-primary-custom">Login</Link>
         ) : (

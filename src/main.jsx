@@ -6,6 +6,7 @@ import "./index.css";
 import AuthProvider from "./context/AuthContext";
 import MainLayout from "./layouts/MainLayout";
 import PrivateRoute from "./routes/PrivateRoute";
+import ThemeProvider from "./providers/ThemeProvider";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -52,8 +53,10 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <AuthProvider>
-      <RouterProvider router={router} />
-      <Toaster position="top-center" />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+        <Toaster position="top-center" />
+      </ThemeProvider>
     </AuthProvider>
   </StrictMode>
 );
