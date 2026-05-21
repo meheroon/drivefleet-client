@@ -13,3 +13,6 @@ body {
 .section-title {
   @apply text-3xl md:text-4xl font-bold text-slate-900;
 }
+html {
+  scroll-behavior: smooth;
+}
