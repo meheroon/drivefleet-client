@@ -1,5 +1,12 @@
 @import "tailwindcss";
-@plugin "daisyui";
+
+@plugin "daisyui" {
+  themes: light --default, dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: Inter, system-ui, sans-serif;
@@ -13,9 +20,45 @@ body {
 .section-title {
   @apply text-3xl md:text-4xl font-bold text-slate-900;
 }
-html {
-  scroll-behavior: smooth;
-}
+
 * {
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark theme fixes */
+[data-theme="dark"] body {
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+[data-theme="dark"] .bg-white,
+[data-theme="dark"] .card,
+[data-theme="dark"] .modal-box {
+  background-color: #111827 !important;
+  color: #e5e7eb !important;
+}
+
+[data-theme="dark"] .section-title,
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3 {
+  color: #f8fafc !important;
+}
+
+[data-theme="dark"] .text-slate-500,
+[data-theme="dark"] .text-slate-600,
+[data-theme="dark"] .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+[data-theme="dark"] .input,
+[data-theme="dark"] .select,
+[data-theme="dark"] .textarea {
+  background-color: #1f2937 !important;
+  color: #f8fafc !important;
+  border-color: #334155 !important;
+}
+
+[data-theme="dark"] .input::placeholder {
+  color: #94a3b8 !important;
 }
